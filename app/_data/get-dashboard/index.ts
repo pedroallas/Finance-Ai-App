@@ -26,7 +26,7 @@ export const getDashboard = async (month: string) => {
   const investmentsTotal = Number(
     (
       await db.transaction.aggregate({
-        where: { ...where, type: "INVESTIMENT" },
+        where: { ...where, type: "INVESTIMENT" }, // Using the enum value from Prisma schema
         _sum: { amount: true },
       })
     )?._sum?.amount,
